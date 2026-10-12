@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOSMICO | Haute Cosmétique & Joaillerie de la Peau</title>
+    <!-- Google Fonts de Alta Gama -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --oro: #D4AF37;
+            --oro-oscuro: #AA7C11;
+            --negro-absoluto: #0A0A0A;
+            --blanco-seda: #F9F9F9;
+            --gris-platino: #222222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--negro-absoluto);
+            color: var(--blanco-seda);
+            overflow-x: hidden;
+        }
+
+        /* BANNER INICIAL Y LEMA */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--oro);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            letter-spacing: 8px;
+            color: var(--oro);
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .lema {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            font-weight: 200;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #E5E5E5;
+        }
+
+        /* SECCIÓN VISIÓN */
+        .vision-section {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            background: radial-gradient(circle, #151515 0%, var(--negro-absoluto) 100%);
+        }
+
+        .vision-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .vision-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 200;
+            color: #CCCCCC;
+        }
+
+        /* RECURSOS MULTIMEDIA (VIDEOS) */
+        .media-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .video-wrapper {
+            background: var(--gris-platino);
+            border: 1px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: var(--oro);
+            font-family: 'Cinzel', serif;
+        }
+
+        /* NAVEGACIÓN Y FILTROS DEL ATELIER */
+        .store-header {
+            padding: 60px 20px 20px;
+            text-align: center;
+            background: var(--negro-absoluto);
+        }
+
+        .store-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--blanco-seda);
+            padding: 10px 25px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--oro);
+            color: var(--negro-absoluto);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* REJILLA DE PRODUCTOS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #111111;
+            border: 1px solid #222222;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--oro);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 120%;
+            background: #1a1a1a;
+            overflow: hidden;
+        }
+
+        .product-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--oro);
+            color: var(--negro-absoluto);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .product-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--blanco-seda);
+            margin-bottom: 10px;
+            line-height: 1.4;
+            min-height: 45px;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: #999999;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 50px;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--oro);
+            font-weight: 400;
+            margin-top: auto;
+            margin-bottom: 20px;
+        }
+
+        .btn-add-cart {
+            background: transparent;
+            border: 1px solid #444444;
+            color: var(--blanco-seda);
+            padding: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .product-card:hover .btn-add-cart {
+            border-color: var(--oro);
+            background: var(--oro);
+            color: var(--negro-absoluto);
+        }
+
+        /* FLOTANTE DEL CARRITO */
+        .cart-toggle-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--oro);
+            color: var(--negro-absoluto);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* PANEL SIDEBAR DEL CARRITO */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: #111111;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+            z-index: 1000;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            border-left: 1px solid var(--oro);
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid #222222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            font-size: 1.5rem;
+        }
+
+        .close-cart-btn {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .cart-items-container {
+            padding: 30px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #222222;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .cart-item-img {
+            width: 70px;
+            height: 85px;
+            object-fit: cover;
+            background: #1a1a1a;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--oro);
+            font-size: 0.9rem;
+        }
+
+        .cart-item-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .cart-control-btn {
+            background: #222222;
+            border: none;
+            color: white;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .remove-item-btn {
+            background: transparent;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .remove-item-btn:hover {
+            color: #ff4d4d;
+        }
+
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid #222222;
+            background: #0a0a0a;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cart-total-price {
+            color: var(--oro);
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: var(--oro);
+            color: var(--negro-absoluto);
+            border: none;
+            padding: 15px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background: var(--oro-oscuro);
+        }
+
+        /* UBICACIÓN Y PAGOS */
+        .local-info-section {
+            padding: 80px 40px;
+            background: #0d0d0d;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .local-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media(max-width: 768px) {
+            .local-container { grid-template-columns: 1fr; }
+            .cart-sidebar { width: 100%; right: -100%; }
+        }
+
+        .local-text h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .local-text p {
+            font-weight: 200;
+            line-height: 1.8;
+            color: #b5b5b5;
+            margin-bottom: 25px;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        .payment-methods h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--blanco-seda);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .bank-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .bank-badge {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+            border-radius: 3px;
+            color: #aaa;
+        }
+
+        .map-wrapper {
+            width: 100%;
+            height: 350px;
+            border: 1px solid var(--oro);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* FORMULARIO DE REGISTRO PREMIUM */
+        .register-section {
+            padding: 80px 20px;
+            background: linear-gradient(var(--negro-absoluto), #111);
+            text-align: center;
+        }
+
+        .register-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            padding: 40px;
+            border-top: 3px solid var(--oro);
+        }
+
+        .register-form h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--oro);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .register-form p {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: #aaa;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: #151515;
+            border: 1px solid #333;
+            padding: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: border 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--oro);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            padding: 14px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--oro);
+            color: #000;
+        }
+
+        /* CONCIERGE CHATBOT IA */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .chat-btn {
+            background: #111111;
+            border: 1px solid var(--oro);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .chat-btn svg {
+            fill: var(--oro);
+            width: 25px;
+            height: 25px;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            height: 480px;
+            background: #111111;
+            border: 1px solid var(--oro);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .chat-window.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .chat-header {
+            background: #0a0a0a;
+            padding: 15px;
+            border-bottom: 1px solid #222;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--oro);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #000;
+            font-size: 0.8rem;
+        }
+
+        .chat-title-info h4 {
+            font-size: 0.9rem;
+            color: var(--oro);
+            font-family: 'Cinzel', serif;
+        }
+
+        .chat-title-info span {
+            font-size: 0.7rem;
+            color: #00ff00;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            border-radius: 4px;
+        }
+
+        .msg.bot {
+            background: #1a1a1a;
+            color: #eee;
+            align-self: flex-start;
+            border-left: 2px solid var(--oro);
+        }
+
+        .msg.user {
+            background: var(--oro);
+            color: #000;
+            align-self: flex-end;
+        }
+
+        .chat-suggestions {
+            padding: 5px 15px;
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .suggest-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #bbb;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        .suggest-btn:hover {
+            border-color: var(--oro);
+            color: #fff;
+        }
+
+        .chat-footer-input {
+            padding: 15px;
+            border-top: 1px solid #222;
+            display: flex;
+            gap: 10px;
+            background: #0a0a0a;
+        }
+
+        .chat-footer-input input {
+            flex-grow: 1;
+            background: #151515;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+
+        .chat-footer-input input:focus {
+            outline: none;
+            border-color: var(--oro);
+        }
+
+        .chat-footer-input button {
+            background: var(--oro);
+            color: #000;
+            border: none;
+            padding: 0 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* NOTIFICACIONES TOAST DE LUJO (REEMPLAZO DE ALERTS) */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast-msg {
+            background: #141414;
+            border: 1px solid var(--oro);
+            color: var(--blanco-seda);
+            padding: 14px 20px;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+            animation: slideInLeft 0.4s ease, fadeOut 0.4s ease 3.6s forwards;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            max-width: 320px;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050505;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #111;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--oro);
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+        }
+
+        .footer-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #444;
+            margin-top: 20px;
+        }
+
+        .cart-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            display: none;
+        }
+
+        .cart-backdrop.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- BOTÓN DE CONTROL DEL CARRITO -->
+    <button class="cart-toggle-btn" onclick="toggleCart()">
+        🛒
+        <div class="cart-count" id="cartCount">0</div>
+    </button>
+
+    <!-- BACKDROP PARA CERRAR EL CARRITO -->
+    <div class="cart-backdrop" id="cartBackdrop" onclick="toggleCart()"></div>
+
+    <!-- PANEL LATERAL DEL CARRITO -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Su Tocador</h3>
+            <button class="close-cart-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cartItems">
+            <p style="color: #666; text-align: center; margin-top: 50px;">Su tocador se encuentra vacío en este instante.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total Estimado:</span>
+                <span class="cart-total-price" id="cartTotal">$0</span>
+            </div>
+            <button class="btn-checkout" onclick="checkoutOrder()">Solicitar Orden Privada</button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <h1>KOSMICO</h1>
+        <div class="lema">Haute Cosmétique & Joaillerie de la Peau</div>
+    </header>
+
+    <!-- SECCIÓN VISIÓN -->
+    <section class="vision-section">
+        <h2>Nuestra Visión</h2>
+        <p>En KOSMICO concebimos el cuidado de la piel y el maquillaje no como una simple rutina de belleza, sino como una joya invisible pero profundamente transformadora. Fusionamos el misticismo del cosmos con la sofisticación de la alta cosmética científica francesa.</p>
+    </section>
+
+    <!-- MULTIMEDIA -->
+    <section class="media-container">
+        <div class="video-wrapper">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-pouring-liquid-luxury-foundation-makeup-41525-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">Creaciones Moleculares - Texturas de Seda</div>
+        </div>
+        <div class="video-wrapper">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-applying-luxury-lipstick-close-up-41521-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">Alta Costura para Labios - Colección Real</div>
+        </div>
+    </section>
+
+    <!-- ATELIER COMERCIAL -->
+    <section class="store-header">
+        <h2>El Atelier</h2>
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterCategory('todos', this)">Todos</button>
+            <button class="filter-btn" onclick="filterCategory('rostro', this)">Rostro</button>
+            <button class="filter-btn" onclick="filterCategory('labios', this)">Labios</button>
+            <button class="filter-btn" onclick="filterCategory('ojos', this)">Ojos</button>
+        </div>
+    </section>
+
+    <!-- REJILLA DE PRODUCTOS -->
+    <main class="products-grid" id="products-grid"></main>
+
+    <!-- UBICACIÓN Y PAGOS -->
+    <section class="local-info-section">
+        <div class="local-container">
+            <div class="local-text">
+                <h2>Ubicación Física & Pagos</h2>
+                <p>Nuestra Maison física y laboratorio privado están ubicados en el corazón financiero de la ciudad. Un espacio diseñado bajo una arquitectura minimalista.</p>
+                <p><strong>Dirección:</strong> Avenida de los Campos Elíseos, Suite 104, Distrito Oro.</p>
+                <p><strong>Horario:</strong> Lunes a Sábado: 10:00 AM - 8:00 PM</p>
+                <div class="payment-methods">
+                    <h4>Canales de Transferencia Directa</h4>
+                    <div class="bank-tags">
+                        <span class="bank-badge">Bancolombia</span>
+                        <span class="bank-badge">Banco de Bogotá</span>
+                        <span class="bank-badge">Davivienda</span>
+                        <span class="bank-badge">Nequi / Daviplata</span>
+                        <span class="bank-badge">PSE</span>
+                        <span class="bank-badge">Tarjetas Internacionales</span>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=350&amp;hl=es&amp;q=Bogota+Chico+(KOSMICO%20Maison)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <section class="register-section">
+        <div class="register-form">
+            <h3>Membresía KOSMICO</h3>
+            <p>Regístrese para acceder a lanzamientos privados, formulaciones a la medida y eventos exclusivos.</p>
+            <form onsubmit="event.preventDefault(); alertVIP();">
+                <div class="form-group">
+                    <label>Nombre de Prestigio</label>
+                    <input type="text" id="vipName" required placeholder="Ej. Lady Victoria Ortega">
+                </div>
+                <div class="form-group">
+                    <label>Correo Electrónico Privado</label>
+                    <input type="email" id="vipEmail" required placeholder="nombre@altaesfera.com">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono de Contacto</label>
+                    <input type="tel" id="vipPhone" required placeholder="+57 300 000 0000">
+                </div>
+                <button type="submit" class="btn-submit">Solicitar Acceso VIP</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CONCIERGE CHATBOT IA -->
+    <div class="chat-widget">
+        <button class="chat-btn" onclick="toggleChat()">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+        </button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-avatar">K</div>
+                <div class="chat-title-info">
+                    <h4>Concierge IA KOSMICO</h4>
+                    <span>Disponible en Línea</span>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="msg bot">Sea bienvenido a la consejería privada de KOSMICO. ¿Desea que le recomiende alguna creación exclusiva de nuestro atelier?</div>
+            </div>
+            <div class="chat-suggestions">
+                <button class="suggest-btn" onclick="sendSuggestion('Muéstrame un producto exclusivo')">💎 Exclusivo</button>
+                <button class="suggest-btn" onclick="sendSuggestion('¿Tienen garantía de 7 días?')">🛡️ Garantía 7 días</button>
+                <button class="suggest-btn" onclick="sendSuggestion('¿Cómo funciona el pago?')">🚚 Métodos de Pago</button>
+            </div>
+            <div class="chat-footer-input">
+                <input type="text" id="chatInput" placeholder="Escriba su consulta elegante..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">KOSMICO</div>
+        <div class="footer-sub">Haute Cosmétique & Joaillerie de la Peau</div>
+        <div class="footer-text">© 2026 KOSMICO Maison de Beauté. Todos los derechos reservados. Acceso Privado.</div>
+    </footer>
+
+    <!-- SCRIPT LÓGICO CON LOCALSTORAGE Y TOASTS DE LUJO -->
+    <script>
+        const masterProducts = [
+            // ROSTRO
+            { id: 1, category: 'rostro', title: 'Fond de Teint Porcelaine', price: 145000, desc: 'Base fluida con microrreflectores de luz para un acabado mate satinado de realeza.', tag: 'Bestseller', img: 'https://images.unsplash.com/photo-1531225557610-c24a1b020618?auto=format&fit=crop&q=80&w=500' },
+            { id: 2, category: 'rostro', title: 'Poudre d’Or Impérial', price: 125000, desc: 'Polvos translúcidos selladores infusionados con destellos sutiles de oro de 24k.', tag: 'Exclusivo', img: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=500' },
+            { id: 3, category: 'rostro', title: 'Sérum Éclat Diamant', price: 185000, desc: 'Primer preparador antiedad con extracto de células madre y polvo de diamante purificado.', tag: 'Nuevo', img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=500' },
+            { id: 4, category: 'rostro', title: 'Voile de Teint Solaire', price: 135000, desc: 'Protector solar con color de alta cobertura y acabado aterciopelado imperceptible.', tag: 'Esencial', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=500' },
+            { id: 5, category: 'rostro', title: 'Illuminateur Céleste', price: 110000, desc: 'Iluminador líquido en gotas con destellos de oro rose para un brillo multidimensional.', tag: 'Icono', img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=500' },
+
+            // LABIOS
+            { id: 6, category: 'labios', title: 'Rouge Saphir Royal', price: 95000, desc: 'Labial de alta pigmentación con infusión de aceites florales y acabado terciopelo.', tag: 'Bestseller', img: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&q=80&w=500' },
+            { id: 7, category: 'labios', title: 'Baume Élixir de Perle', price: 85000, desc: 'Balsamo reparador nocturno enriquecido con polvo de perlas cultivadas y manteca de karité.', tag: 'Exclusivo', img: 'https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?auto=format&fit=crop&q=80&w=500' },
+            { id: 8, category: 'labios', title: 'Gloss Reflet Miroir', price: 89000, desc: 'Brillo labial ultra jugoso con efecto volumen óptico y cero sensación pegajosa.', tag: 'Nuevo', img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&q=80&w=500' },
+            { id: 9, category: 'labios', title: 'Conture de Soie', price: 78000, desc: 'Lápiz delineador de labios de alta duración con textura deslizante y waterproof.', tag: 'Esencial', img: 'https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&q=80&w=500' },
+
+            // OJOS
+            { id: 10, category: 'ojos', title: 'Palette Constellation Noire', price: 210000, desc: 'Sombra de ojos con 12 tonos mates y metálicos prensados con minerales nocturnos.', tag: 'Masterpiece', img: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&q=80&w=500' },
+            { id: 11, category: 'ojos', title: 'Mascara Regard Infini', price: 105000, desc: 'Máscara de pestañas de alto impacto con efecto alargador y volumen panorámico 24h.', tag: 'Bestseller', img: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=500' },
+            { id: 12, category: 'ojos', title: 'Ligne de Nuit Eyeliner', price: 92000, desc: 'Delineador líquido en plumón de precisión milimétrica y negro azabache absoluto.', tag: 'Esencial', img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=500' }
+        ];
+
+        // Cargar carrito guardado en el navegador o iniciar vacío
+        let cart = JSON.parse(localStorage.getItem('kosmico_cart')) || [];
+
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.innerText = message;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 4000);
+        }
+
+        function renderProducts(filter = 'todos') {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'todos' ? masterProducts : masterProducts.filter(p => p.category === filter);
+
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image-container">
+                        <span class="product-tag">${product.tag}</span>
+                        <img src="${product.img}" alt="${product.title}" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">${product.category}</span>
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-desc">${product.desc}</p>
+                        <div class="product-price">$${product.price.toLocaleString()} COP</div>
+                        <button class="btn-add-cart" onclick="addToCart(${product.id})">Añadir al Tocador</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterCategory(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderProducts(category);
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+            document.getElementById('cartBackdrop').classList.toggle('active');
+        }
+
+        function saveCart() {
+            localStorage.setItem('kosmico_cart', JSON.stringify(cart));
+        }
+
+        function addToCart(id) {
+            const product = masterProducts.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            saveCart();
+            updateCartUI();
+            showToast(`✦ "${product.title}" añadido a su tocador.`);
+            toggleCart();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            saveCart();
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItems');
+            const countBadge = document.getElementById('cartCount');
+            const totalElement = document.getElementById('cartTotal');
+
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color: #666; text-align: center; margin-top: 50px;">Su tocador se encuentra vacío en este instante.</p>';
+            } else {
+                container.innerHTML = '';
+                cart.forEach(item => {
+                    totalCount += item.qty;
+                    totalPrice += item.price * item.qty;
+
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <img src="${item.img}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.title}</h4>
+                            <div class="cart-item-price">$${(item.price * item.qty).toLocaleString()} COP</div>
+                            <div class="cart-item-control">
+                                <button class="cart-control-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="cart-control-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn" onclick="changeQty(${item.id}, -${item.qty})">&times;</button>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            countBadge.innerText = totalCount;
+            totalElement.innerText = `$${totalPrice.toLocaleString()} COP`;
+        }
+
+        function checkoutOrder() {
+            if (cart.length === 0) {
+                showToast('⚠️ Su tocador está vacío.');
+                return;
+            }
+            showToast('💎 Orden privada generada. Redirigiendo a pasarela...');
+            cart = [];
+            saveCart();
+            updateCartUI();
+            toggleCart();
+        }
+
+        function alertVIP() {
+            const name = document.getElementById('vipName').value;
+            showToast(`👑 Bienvenido a la Élite, ${name}. Credencial enviada.`);
+        }
+
+        function toggleChat() {
+            document.getElementById('chatWindow').classList.toggle('active');
+        }
+
+        function sendSuggestion(text) {
+            document.getElementById('chatInput').value = text;
+            sendChatMessage();
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const messagesContainer = document.getElementById('chatMessages');
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.innerText = text;
+            messagesContainer.appendChild(userMsg);
+
+            input.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'msg bot';
+
+                const lower = text.toLowerCase();
+                if (lower.includes('exclusivo') || lower.includes('producto')) {
+                    botMsg.innerText = 'Le recomiendo nuestra joya insignia: la Palette Constellation Noire o el Sérum Éclat Diamant. Formulaciones magistrales.';
+                } else if (lower.includes('garantía') || lower.includes('7 días')) {
+                    botMsg.innerText = 'Contamos con una política de satisfacción absoluta de 7 días hábiles directamente en nuestra Maison física.';
+                } else if (lower.includes('pago') || lower.includes('contra entrega')) {
+                    botMsg.innerText = 'Aceptamos transferencias instantáneas (Bancolombia, Nequi, Daviplata, PSE) y tarjetas de crédito internacionales de forma segura.';
+                } else {
+                    botMsg.innerText = 'Comprendo perfectamente su solicitud. Un asesor estético de nuestra Maison se pondrá en contacto con usted en breve.';
+                }
+
+                messagesContainer.appendChild(botMsg);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 800);
+        }
+
+        window.onload = () => {
+            renderProducts();
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>
